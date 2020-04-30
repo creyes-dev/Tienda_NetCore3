@@ -9,6 +9,7 @@ using Tienda_NetCore3.Models;
 
 namespace Tienda_NetCore3.Controllers
 {
+    [Area("Cliente")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
