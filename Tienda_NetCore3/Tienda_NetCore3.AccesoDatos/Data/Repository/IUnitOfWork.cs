@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Tienda_NetCore3.AccesoDatos.Data.Repository
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
+        ICategoriaRepository categoria { get; }
+
+        void AplicarCambios();
     }
 }
