@@ -22,11 +22,6 @@
 
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
-  </ItemGroup>
-
-
-  <ItemGroup>
     <ProjectReference Include="..\Tienda_NetCore3.AccesoDatos\Tienda_NetCore3.AccesoDatos.csproj" />
   </ItemGroup>
 

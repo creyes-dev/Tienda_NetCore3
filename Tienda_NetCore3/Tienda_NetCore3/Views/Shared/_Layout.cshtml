@@ -24,7 +24,17 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link" asp-area="Cliente" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Gestión de contenidos
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropDown">
+                            <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Categoria" asp-action="Index">Categoría</a>
+                            <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Frecuencia" asp-action="Index">Frecuencia</a>
+                            <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Servicio" asp-action="Index">Servicio</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
