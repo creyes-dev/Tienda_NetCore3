@@ -5,11 +5,16 @@ VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tienda_NetCore3", "Tienda_NetCore3\Tienda_NetCore3.csproj", "{F8E1C265-9931-4770-91B0-238C2449987C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tienda_NetCore3.AccesoDatos", "Tienda_NetCore3.AccesoDatos\Tienda_NetCore3.AccesoDatos.csproj", "{A215DA93-2ED9-4B67-8F48-A735D89E3F4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tienda_NetCore3.AccesoDatos", "Tienda_NetCore3.AccesoDatos\Tienda_NetCore3.AccesoDatos.csproj", "{A215DA93-2ED9-4B67-8F48-A735D89E3F4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tienda_NetCore3.Models", "Tienda_NetCore3.Models\Tienda_NetCore3.Models.csproj", "{C00C23DC-2DAB-4B43-9B85-C6F09F60350B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tienda_NetCore3.Models", "Tienda_NetCore3.Models\Tienda_NetCore3.Models.csproj", "{C00C23DC-2DAB-4B43-9B85-C6F09F60350B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tienda_NetCore3.Utility", "Tienda_NetCore3.Utility\Tienda_NetCore3.Utility.csproj", "{9AC18EFE-118C-4674-948A-7DC19C4A0D9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tienda_NetCore3.Utility", "Tienda_NetCore3.Utility\Tienda_NetCore3.Utility.csproj", "{9AC18EFE-118C-4674-948A-7DC19C4A0D9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{86536D91-5255-4C6C-BD84-BFA833889F53}"
+	ProjectSection(SolutionItems) = preProject
+		comandos.sh = comandos.sh
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
