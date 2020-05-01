@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Tienda_NetCore3.Models;
 
 namespace Tienda_NetCore3.AccesoDatos.Data
 {
@@ -12,5 +13,8 @@ namespace Tienda_NetCore3.AccesoDatos.Data
             : base(options)
         {
         }
+
+        public DbSet<Categoria> Categoria { get; set; }
+
     }
 }

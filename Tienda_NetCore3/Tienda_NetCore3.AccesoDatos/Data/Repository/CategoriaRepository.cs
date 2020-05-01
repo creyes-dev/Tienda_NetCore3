@@ -3,11 +3,35 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Tienda_NetCore3.Models;
+using System.Linq;
 
 namespace Tienda_NetCore3.AccesoDatos.Data.Repository
 {
-    public class CategoriaRepository
+    public class CategoriaRepository : Repository<Categoria>, ICategoriaRepository
     {
+        private readonly ApplicationDbContext _db;
 
+        public CategoriaRepository(ApplicationDbContext db)
+        {
+            _db = db;
+        }
+
+        public IEnumerable<SelectListItem> ObtenerListadoCategorias()
+        {
+            return _db.Categoria.Select(i => new SelectListItem()
+            {
+                Text = i.Nombre,
+                Value = i.Id.ToString()
+            });
+        }
+
+        public void Update(Categoria categoria)
+        {
+            var objeto = _db.Categoria.FirstOrDefault(s => s.Id == categoria.Id);
+            objeto.Nombre = categoria.Nombre;
+            objeto.Orden = categoria.Orden;
+
+            _db.SaveChanges();
+        }
     }
 }
