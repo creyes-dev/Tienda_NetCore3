@@ -15,6 +15,7 @@ namespace Tienda_NetCore3.AccesoDatos.Data
         }
 
         public DbSet<Categoria> Categoria { get; set; }
+        public DbSet<Frecuencia> Frecuencia { get; set; }
 
     }
 }

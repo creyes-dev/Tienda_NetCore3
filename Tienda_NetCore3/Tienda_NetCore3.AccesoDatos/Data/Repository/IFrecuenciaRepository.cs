@@ -6,9 +6,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Tienda_NetCore3.AccesoDatos.Data.Repository
 {
-    public interface ICategoriaRepository : IRepository<Categoria>
+    public interface IFrecuenciaRepository : IRepository<Frecuencia>
     {
-        IEnumerable<SelectListItem> ObtenerListadoCategoriasParaDropDown();
-        void Update(Categoria categoria);
-    } 
+        IEnumerable<SelectListItem> ObtenerListadoFrecuenciasParaDropDown();
+
+        void Update(Frecuencia frecuencia);
+    }
 }

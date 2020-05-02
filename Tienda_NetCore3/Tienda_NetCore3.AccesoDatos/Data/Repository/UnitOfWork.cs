@@ -12,9 +12,12 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
         {
             _contexto = contexto;
             categoria = new CategoriaRepository(contexto);
+            frecuencia = new FrecuenciaRepository(contexto);
         }
 
         public ICategoriaRepository categoria { get; private set; }
+
+        public IFrecuenciaRepository frecuencia { get; private set; }
 
         public void AplicarCambios()
         {
