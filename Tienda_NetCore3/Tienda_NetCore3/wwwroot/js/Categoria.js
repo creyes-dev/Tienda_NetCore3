@@ -13,8 +13,8 @@ function loadDataTable() {
             "datatype": "json"
         },
         "columns": [
-            { "data": "Nombre", "width": "50%" },
-            { "data": "Orden", "width": "20%" },
+            { "data": "nombre", "width": "50%" },
+            { "data": "orden", "width": "20%" },
             {
                 "data": "id",
                 "render": function (data) {
@@ -23,7 +23,7 @@ function loadDataTable() {
                                     <i class='far fa-edit'></i> Editar
                                 </a>
                                 &nbsp;
-                                <a onclick=Delete("/Admin/Categoria/Eliminar/${data}") class='btn btn-danger text-white' style='cursor:pointer; width:100px;'>
+                                <a onclick=Eliminar("/Admin/Categoria/Eliminar/${data}") class='btn btn-danger text-white' style='cursor:pointer; width:100px;'>
                                     <i class='far fa-trash-alt'></i> Eliminar
                                 </a>
                             </div>
@@ -35,5 +35,31 @@ function loadDataTable() {
             "emptyTable": "Sin registros."
         },
         "width": "100%"
+    });
+}
+
+function Eliminar(url) {
+    swal({
+        title: "Estás seguro de eliminar la categoría?",
+        text: "No podrás volver a obtener el contenido borrado!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Si, eliminalo!",
+        closeOnconfirm: true
+    }, function () {
+        $.ajax({
+            type: 'DELETE',
+            url: url,
+            success: function (data) {
+                if (data.success) {
+                    toastr.success(data.message);
+                    dataTable.ajax.reload();
+                }
+                else {
+                    toastr.error(data.message);
+                }
+            }
+        });
     });
 }
