@@ -18,3 +18,13 @@ PM> update-database
 Build started...
 Build succeeded.
 Done.
+
+PM> add-migration AddServicioToDb
+Build started...
+Build succeeded.
+To undo this action, use Remove-Migration.
+
+PM> update-database
+Build started...
+Build succeeded.
+Done
