@@ -63,7 +63,7 @@ namespace Tienda_NetCore3.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult ObtenerTodas()
         {
-            return Json(new { data = _unitOfWork.categoria.ObtenerListadoCategorias() });
+            return Json(new { data = _unitOfWork.categoria.GetAll() });
         }
 
         [HttpDelete]

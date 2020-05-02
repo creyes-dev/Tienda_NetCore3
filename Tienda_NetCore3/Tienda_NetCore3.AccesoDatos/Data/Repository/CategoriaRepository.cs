@@ -16,7 +16,7 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
             _contexto = contexto;
         }
 
-        public IEnumerable<SelectListItem> ObtenerListadoCategorias()
+        public IEnumerable<SelectListItem> ObtenerListadoCategoriasParaDropDown()
         {
             return _contexto.Categoria.Select(i => new SelectListItem()
             {

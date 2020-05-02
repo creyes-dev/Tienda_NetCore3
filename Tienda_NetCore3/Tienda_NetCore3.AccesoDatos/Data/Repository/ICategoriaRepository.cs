@@ -8,7 +8,7 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
 {
     public interface ICategoriaRepository : IRepository<Categoria>
     {
-        IEnumerable<SelectListItem> ObtenerListadoCategorias();
+        IEnumerable<SelectListItem> ObtenerListadoCategoriasParaDropDown();
 
         void Update(Categoria categoria);
     } 
