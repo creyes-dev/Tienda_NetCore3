@@ -33,6 +33,12 @@ namespace Tienda_NetCore3.Controllers
             return View(_homeViewModel);
         }
 
+        public IActionResult Detalles(int id)
+        {
+            var servicio = _unitOfWork.servicio.GetFirstOrDefault(incluirPropiedades: "Categoria,Frecuencia", filtro: s => s.Id == id);
+            return View(servicio); 
+        }
+
         public IActionResult Privacy()
         {
             return View();

@@ -65,7 +65,7 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
             {
                 foreach (var incluirPropiedad in incluirPropiedades.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    consulta.Include(incluirPropiedad);
+                    consulta = consulta.Include(incluirPropiedad);
                 }
             }
 
