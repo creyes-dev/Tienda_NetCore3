@@ -3,7 +3,7 @@
     var titulo = "Crear Servicio";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
+
 <form method="post" asp-action="Upsert" enctype="multipart/form-data">
 
     <div class="row px-2 mx-2 backgroundWhite border">
@@ -42,7 +42,7 @@
                     <label asp-for="Servicio.Descripcion"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Servicio.Descripcion" class="form-control" />
+                    <textarea asp-for="Servicio.Descripcion" class="form-control" style="height:300px;"></textarea>
                     <span asp-validation-for="Servicio.Descripcion" class="text-danger"></span>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                 </div>
             </div>
         </div>
-        @if(Model.Servicio.Id != 0)
+        @if (Model.Servicio.Id != 0)
         {
             <div class="col-3">
                 <img src="@Model.Servicio.UrlImagen" width="100%" style="border-radius:5px; border: 1px solid #ddd9b9" />
@@ -107,7 +107,15 @@
 </form>
 
 @section Scripts {
+    <script src="https://cdn.tiny.cloud/1/0ldo097ahw3wrvyx39u8s6jsfjk4w8cp4x6kwl8o2uzpooqt/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
     <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'lists',
+            menubar: 'file edit format'
+        });
+
         function validarIngreso() {
             if (document.getElementById("uploadbox").value == "") {
                 swal("Error", "Por favor seleccione una imágen", "error");
@@ -116,8 +124,7 @@
             return true;
         };
 
-        $(document).ready(function () 
-        {
+        $(document).ready(function () {
             if (document.getElementById('txtPrecio').value == "0") {
                 document.getElementById('txtPrecio').value = "";
             }
