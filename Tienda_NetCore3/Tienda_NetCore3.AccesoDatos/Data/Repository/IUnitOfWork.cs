@@ -7,8 +7,8 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
     public interface IUnitOfWork : IDisposable
     {
         ICategoriaRepository categoria { get; }
-
         IFrecuenciaRepository frecuencia { get; }
+        IServicioRepository servicio { get; }
 
         void AplicarCambios();
     }

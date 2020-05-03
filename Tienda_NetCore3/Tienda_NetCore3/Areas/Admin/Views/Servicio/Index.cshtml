@@ -1,0 +1,37 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<div class="border backgroundWhite">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-primary">Lista de servicios</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp; Crear nuevo servicio</a>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <table id="tblData" class="table table-striped table-bordered" style="width=100%">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Nombre de Categoría</th>
+                <th>Precio</th>
+                <th>Frecuencia</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+
+</div>
+
+@section Scripts{
+    <script src="~/js/Servicio.js"></script>
+}
