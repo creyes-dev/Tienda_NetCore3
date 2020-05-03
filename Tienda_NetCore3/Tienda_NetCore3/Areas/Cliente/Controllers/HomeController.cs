@@ -6,22 +6,31 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Tienda_NetCore3.Models;
+using Tienda_NetCore3.Models.ViewModels;
+using Tienda_NetCore3.AccesoDatos.Data.Repository;
 
 namespace Tienda_NetCore3.Controllers
 {
     [Area("Cliente")]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IUnitOfWork _unitOfWork;
+        private HomeViewModel _homeViewModel;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IUnitOfWork unitOfWork)
         {
-            _logger = logger;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            return View();
+            _homeViewModel = new HomeViewModel()
+            {
+                ListadoCategorias = _unitOfWork.categoria.GetAll(),
+                ListadoServicios = _unitOfWork.servicio.GetAll(incluirPropiedades: "Frecuencia")
+            };
+
+            return View(_homeViewModel);
         }
 
         public IActionResult Privacy()

@@ -1,8 +1,36 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model Tienda_NetCore3.Models.ViewModels.HomeViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Tienda</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@foreach(var categoria in Model.ListadoCategorias.OrderBy(o => o.Orden))
+{
+    @if(Model.ListadoServicios.Where(c => c.IdCategoria == categoria.Id).Count() > 0)
+    {
+        <div class="row container pb-3 backgroundWhite">
+            <div class="col-12">
+                <h2 class="text-success"><b>@categoria.Nombre</b></h2>
+
+                <div class="col-12">
+                    <div class="row my-3">
+                        @foreach(var servicio in Model.ListadoServicios.Where(c => c.IdCategoria == categoria.Id))
+                        {
+                             <div class="col-lg-4 col-xl-3 col-md-6 pb-4">
+                                 <div class="card" style="border:2px solid #43ac6a;border-radius:5px;background:url('/images/dust_scratches.png')">
+                                     <div class="pl-3 pt-1 text-center">
+                                         <h3 class="card-title text-primary"><b>@servicio.Nombre</b></h3>
+                                     </div>
+                                     <div class="d-flex justify-content-between">
+                                         <div class="pl-1 text-muted">Precio por servicio</div>
+                                         <div class="pr-2 text-muted h5">$@servicio.Precio</div>
+                                     </div>
+                                     <img src="@servicio.UrlImagen" class="card-img-top p-2 rounded" />
+                                     <div class="text-muted text-center pb-2">@servicio.Frecuencia.Nombre</div>
+                                     <a asp-action="Detalles" class="btn btn-success" style="border-radius:2px;" asp-route-id="@servicio.Id">Detalles</a>
+                                 </div>
+                             </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>    
+    }
+}
