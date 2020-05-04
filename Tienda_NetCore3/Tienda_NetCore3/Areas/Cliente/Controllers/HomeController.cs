@@ -8,6 +8,9 @@ using Microsoft.Extensions.Logging;
 using Tienda_NetCore3.Models;
 using Tienda_NetCore3.Models.ViewModels;
 using Tienda_NetCore3.AccesoDatos.Data.Repository;
+using Microsoft.AspNetCore.Http;
+using Tienda_NetCore3.Utility;
+using Tienda_NetCore3.Extensions;
 
 namespace Tienda_NetCore3.Controllers
 {
@@ -37,6 +40,26 @@ namespace Tienda_NetCore3.Controllers
         {
             var servicio = _unitOfWork.servicio.GetFirstOrDefault(incluirPropiedades: "Categoria,Frecuencia", filtro: s => s.Id == id);
             return View(servicio); 
+        }
+
+        public IActionResult AgregarAlCarrito(int idServicio)
+        {
+            List<int> listado = new List<int>();
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(SD.SesionCarritoCompras)))
+            {
+                listado.Add(idServicio);
+                HttpContext.Session.SetObject(SD.SesionCarritoCompras, listado);
+            }
+            else
+            {
+                listado = HttpContext.Session.GetObject<List<int>>(SD.SesionCarritoCompras);
+                if (!listado.Contains(idServicio))
+                {
+                    listado.Add(idServicio);
+                    HttpContext.Session.SetObject(SD.SesionCarritoCompras, listado);
+                }
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Privacy()
