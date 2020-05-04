@@ -1,4 +1,10 @@
-﻿@model Tienda_NetCore3.Models.Servicio 
+﻿@model Tienda_NetCore3.Models.Servicio
+
+@using Tienda_NetCore3.Utility
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@using Tienda_NetCore3.Extensions
+
 @{
     ViewData["Title"] = "Detalles";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -23,7 +29,7 @@
                                 <h3 class="text-success">Precio por servicio: $@Model.Precio</h3>
                                 <h4 class="text-muted">@Model.Frecuencia.Nombre</h4>
                                 <p class="text-secondary">@Html.Raw(Model.Descripcion)</p>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-4 text-center">
@@ -38,7 +44,29 @@
                     <a asp-action="Index" class="btn btn-success form-control btn-lg" style="height: 50px">Volver al listado de servicios</a>
                 </div>
                 <div class="col-12 col-md-6 pb-1">
-                    <a asp-action="AgregarAlCarrito" asp-route-idServicio="@Model.Id" class="btn btn-primary btn-square form-control btn-lg" style="height: 50px">Agregar al carrito de compras</a>
+
+                    @{
+                        var agregarCarritoHabilitado = true;
+
+                        if (HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(SD.SesionCarritoCompras) != null)
+                        {
+                            var listado = HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(SD.SesionCarritoCompras);
+                            if (listado.Contains(Model.Id))
+                            {
+                                agregarCarritoHabilitado = false;
+                            }
+                        }
+                    }
+
+                    @if (agregarCarritoHabilitado)
+                    {
+                        <a asp-action="AgregarAlCarrito" asp-route-idServicio="@Model.Id" class="btn btn-primary btn-square form-control btn-lg" style="height: 50px">Agregar al carrito de compras</a>
+                    }
+                    else
+                    {
+                        <button class="btn btn-primary btn-square form-control btn-lg" style="height:50px;" disabled>Item ya se encuentra en el carrito</button>
+                    }
+
                 </div>
             </div>
         </div>
