@@ -9,6 +9,8 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
         ICategoriaRepository categoria { get; }
         IFrecuenciaRepository frecuencia { get; }
         IServicioRepository servicio { get; }
+        IEncabezadoCompraRepository encabezadoCompra { get; }
+        IDetalleCompraRepository detalleCompra { get; }
 
         void AplicarCambios();
     }

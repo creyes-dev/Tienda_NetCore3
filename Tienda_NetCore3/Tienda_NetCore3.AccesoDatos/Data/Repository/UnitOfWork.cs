@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Tienda_NetCore3.Models;
 
 namespace Tienda_NetCore3.AccesoDatos.Data.Repository
 {
@@ -14,6 +15,8 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
             categoria = new CategoriaRepository(contexto);
             frecuencia = new FrecuenciaRepository(contexto);
             servicio = new ServicioRepository(contexto);
+            encabezadoCompra = new EncabezadoCompraRepository(contexto);
+            detalleCompra = new DetalleCompraRepository(contexto);
         }
 
         public ICategoriaRepository categoria { get; private set; }
@@ -21,6 +24,10 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
         public IFrecuenciaRepository frecuencia { get; private set; }
 
         public IServicioRepository servicio { get; private set; }
+
+        public IEncabezadoCompraRepository encabezadoCompra { get; private set; }
+
+        public IDetalleCompraRepository detalleCompra { get; set; }
 
         public void AplicarCambios()
         {
