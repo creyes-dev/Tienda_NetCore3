@@ -1,3 +1,5 @@
+Comandos ejecutados en Tienda_NetCore3.AccesoDatos
+
 PM> add-migration AddCategoriaToDatabase
 Build started...
 Build succeeded.
@@ -28,3 +30,20 @@ PM> update-database
 Build started...
 Build succeeded.
 Done
+
+PM> add-migration EncabezadoCompraToDatabase
+Build started...
+Build succeeded.
+To undo this action, use Remove-Migration.
+PM> update-database
+Build started...
+Build succeeded.
+Done.
+
+PM> add-migration DetalleCompraToDatabase
+Build started...
+Build succeeded.
+To undo this action, use Remove-Migration.
+PM> update-database
+Build started...
+Build succeeded.
