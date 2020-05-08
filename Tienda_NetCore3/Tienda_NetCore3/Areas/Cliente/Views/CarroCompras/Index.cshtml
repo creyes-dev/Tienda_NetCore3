@@ -1,0 +1,76 @@
+﻿@model Tienda_NetCore3.Models.ViewModels.CarroComprasViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<form method="post">
+
+    @if(Model.ListadoServicios.Count > 0)
+    {
+        <br />
+        <div class="backgroundWhite container">
+            <div class="card">
+                <div class="card-header bg-dark text-light ml-0 row container">
+                    <div class="col-12 d-none d-md-block col-md-6 pb-1">
+                        <i class="fas fa-shopping-cart"></i>&nbsp; Carro de compras
+                    </div>
+                    <div class="col-12 col-md-4 offset-md-2 text-right">
+                        <a asp-action="Index" asp-controller="Home" asp-area="Cliente" class="btn btn-outline-info form-control btn-sm">Carro de compras</a>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    @{
+                        var totalCompra = 0.0;
+                    }
+
+                    @foreach(var item in Model.ListadoServicios)
+                    {
+                        totalCompra += (item.Precio * item.Frecuencia.Conteo);
+
+                    <div class="row">
+                        <div class="d-none d-md-block col-md-2 text-center py-2">
+                            <img src="@item.UrlImagen" class="rounded" width="100%" />
+                        </div>
+                        <div class="col-12 col-md-5 text-md-left pt-3">
+                            <h5><strong class="text-primary">@item.Nombre</strong></h5>
+                            <h5 class="text-secondary">@item.Precio por servicio</h5>
+                            <h5 class="text-secondary"><small>@item.Frecuencia.Nombre</small></h5>
+                        </div> 
+                        <div class="col-12 col-md-5 row pt-3">
+                            <div class="col-6 text-md-right" style="padding-top: 5px;">
+                                <h6><strong class="text-danger">@((item.Precio * item.Frecuencia.Conteo).ToString("c"))</strong></h6>
+                            </div>
+                            <div class="col-6 text-right">
+                                <button type="submit" class="btn btn-outline-danger" asp-action="remover" asp-route-serviceId="@item.Id">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    }
+
+                    <div class="row">
+                        <div class="col-12 text-right pr-4">
+                            <p class="text-success h5">Total (USD): &nbsp;&nbsp; $(@totalCompra)</p>
+                        </div> 
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <div class="col-12 col-md-6 offset-md-6 col-lg-4 offset-lg-8 text-right">
+                        <a asp-action="Resumen" asp-area="Cliente" asp-controller="CarroCompras" class="btn btn-success form-control">Resumen</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      } else
+      {
+            <div class="backgroundWhite">No hay items agregados al carro de compras...</div>      
+      }
+
+</form>

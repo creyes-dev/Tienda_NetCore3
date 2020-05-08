@@ -47,7 +47,7 @@
                     @if (HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(SD.SesionCarritoCompras) != null)
                     {
                         <li style="color:white">
-                            <a asp-area="Cliente" asp-controller="Carrito" asp-action="Index" class="nav-link text-white">
+                            <a asp-area="Cliente" asp-controller="CarroCompras" asp-action="Index" class="nav-link text-white">
                                 @{
                                     var cantItems = HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(SD.SesionCarritoCompras).Count;
                                 }
