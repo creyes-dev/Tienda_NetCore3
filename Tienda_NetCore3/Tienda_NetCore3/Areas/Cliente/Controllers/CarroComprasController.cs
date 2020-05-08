@@ -44,5 +44,16 @@ namespace Tienda_NetCore3.Areas.Cliente.Controllers
 
             return View(CarroComprasViewModel);
         }
+
+        public IActionResult Remover(int idServicio)
+        {
+            List<int> listadoIdServicios = new List<int>();
+            listadoIdServicios = HttpContext.Session.GetObject<List<int>>(SD.SesionCarritoCompras);
+            listadoIdServicios.Remove(idServicio);
+            HttpContext.Session.SetObject(SD.SesionCarritoCompras, listadoIdServicios);
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

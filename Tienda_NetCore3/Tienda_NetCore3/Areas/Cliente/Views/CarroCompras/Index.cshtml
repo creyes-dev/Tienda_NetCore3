@@ -45,7 +45,7 @@
                                 <h6><strong class="text-danger">@((item.Precio * item.Frecuencia.Conteo).ToString("c"))</strong></h6>
                             </div>
                             <div class="col-6 text-right">
-                                <button type="submit" class="btn btn-outline-danger" asp-action="remover" asp-route-serviceId="@item.Id">
+                                <button type="submit" class="btn btn-outline-danger" asp-action="remover" asp-route-idServicio="@item.Id">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
