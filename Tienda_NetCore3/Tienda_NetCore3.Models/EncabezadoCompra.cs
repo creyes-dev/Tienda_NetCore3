@@ -30,7 +30,7 @@ namespace Tienda_NetCore3.Models
 
         public DateTime FechaCompra { get; set; }
 
-        public string Status { get; set; }
+        public string Estado { get; set; }
 
         public string Comentarios { get; set; }
 
