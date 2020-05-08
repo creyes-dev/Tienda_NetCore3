@@ -23,6 +23,9 @@ namespace Tienda_NetCore3.Models
         public string Direccion { get; set; }
 
         [Required]
+        public string Ciudad { get; set; }
+
+        [Required]
         public string CodigoPostal { get; set; }
 
         public DateTime FechaCompra { get; set; }

@@ -45,6 +45,21 @@ namespace Tienda_NetCore3.Areas.Cliente.Controllers
             return View(CarroComprasViewModel);
         }
 
+        public IActionResult Resumen()
+        {
+            if (HttpContext.Session.GetObject<List<int>>(SD.SesionCarritoCompras) != null)
+            {
+                List<int> listadoIdServicios = new List<int>();
+                listadoIdServicios = HttpContext.Session.GetObject<List<int>>(SD.SesionCarritoCompras);
+                foreach (int idServicio in listadoIdServicios)
+                {
+                    CarroComprasViewModel.ListadoServicios.Add(_unitOfWork.servicio.GetFirstOrDefault(u => u.Id == idServicio, incluirPropiedades: "Frecuencia,Categoria"));
+                }
+            }
+
+            return View(CarroComprasViewModel);
+        }
+
         public IActionResult Remover(int idServicio)
         {
             List<int> listadoIdServicios = new List<int>();
