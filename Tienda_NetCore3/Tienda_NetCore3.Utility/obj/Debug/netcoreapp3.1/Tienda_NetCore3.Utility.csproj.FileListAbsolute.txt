@@ -1,0 +1,9 @@
+C:\Users\Cristian\source\repos\Tienda_NetCore3\Tienda_NetCore3.Utility\bin\Debug\netcoreapp3.1\Tienda_NetCore3.Utility.deps.json
+C:\Users\Cristian\source\repos\Tienda_NetCore3\Tienda_NetCore3.Utility\bin\Debug\netcoreapp3.1\Tienda_NetCore3.Utility.dll
+C:\Users\Cristian\source\repos\Tienda_NetCore3\Tienda_NetCore3.Utility\bin\Debug\netcoreapp3.1\Tienda_NetCore3.Utility.pdb
+C:\Users\Cristian\source\repos\Tienda_NetCore3\Tienda_NetCore3.Utility\obj\Debug\netcoreapp3.1\Tienda_NetCore3.Utility.csproj.CoreCompileInputs.cache
+C:\Users\Cristian\source\repos\Tienda_NetCore3\Tienda_NetCore3.Utility\obj\Debug\netcoreapp3.1\Tienda_NetCore3.Utility.AssemblyInfoInputs.cache
+C:\Users\Cristian\source\repos\Tienda_NetCore3\Tienda_NetCore3.Utility\obj\Debug\netcoreapp3.1\Tienda_NetCore3.Utility.AssemblyInfo.cs
+C:\Users\Cristian\source\repos\Tienda_NetCore3\Tienda_NetCore3.Utility\obj\Debug\netcoreapp3.1\Tienda_NetCore3.Utility.dll
+C:\Users\Cristian\source\repos\Tienda_NetCore3\Tienda_NetCore3.Utility\obj\Debug\netcoreapp3.1\Tienda_NetCore3.Utility.pdb
+C:\Users\Cristian\source\repos\Tienda_NetCore3\Tienda_NetCore3.Utility\obj\Debug\netcoreapp3.1\Tienda_NetCore3.Utility.csprojAssemblyReference.cache

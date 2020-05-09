@@ -60,3 +60,10 @@ Build succeeded.
 Done.
 PM> 
 
+PM> add-migration agregarPropiedadesAUsuario
+Build started...
+Build succeeded.
+To undo this action, use Remove-Migration.
+PM> update-database
+Build started...
+Build succeeded.

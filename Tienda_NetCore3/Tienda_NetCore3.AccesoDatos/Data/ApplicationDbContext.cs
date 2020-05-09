@@ -19,5 +19,8 @@ namespace Tienda_NetCore3.AccesoDatos.Data
         public DbSet<Servicio> Servicio { get; set; }
         public DbSet<EncabezadoCompra> EncabezadoCompra { get; set; }
         public DbSet<DetalleCompra> DetalleCompra { get; set; }
+
+        public DbSet<Usuario> Usuario { get; set; }
+
     }
 }
