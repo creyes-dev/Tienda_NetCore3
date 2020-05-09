@@ -105,6 +105,7 @@ namespace Tienda_NetCore3.Areas.Cliente.Controllers
 
                 // Al final aplicar los cambios
                 _unitOfWork.AplicarCambios();
+
                 // Reiniciar la variable de sesión del carro de compras
                 HttpContext.Session.SetObject(SD.SesionCarritoCompras, new List<int>());
                 return RedirectToAction("ConfirmacionCompra", "CarroCompras",new { id = CarroComprasViewModel.EncabezadoCompra.Id });

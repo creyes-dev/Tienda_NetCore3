@@ -13,5 +13,8 @@ namespace Tienda_NetCore3.Utility
         public const string EstadoAprobado = "Aprobado";
         public const string EstadoRechazado = "Rechazado";
 
+        public const string Admin = "Admin";
+        public const string Manager = "Manager";
+
     }
 }
