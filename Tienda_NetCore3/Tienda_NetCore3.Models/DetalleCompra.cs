@@ -20,7 +20,7 @@ namespace Tienda_NetCore3.Models
         [Required]
         public int IdServicio { get; set; }
 
-        [ForeignKey("IdEncabezadoCompra")]
+        [ForeignKey("IdServicio")]
         public Servicio Servicio { get; set; }
 
         [Required]
