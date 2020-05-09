@@ -1,0 +1,21 @@
+﻿@model int
+@{
+    ViewData["Title"] = "ConfirmacionCompra";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container row">
+    <div class="col-12 text-center">
+        Solicitud de compra enviada<br />
+        <img src="~/images/leaves.png" width="50%" />
+    </div>
+    <div class="col-12 text-center" style="color:maroon">
+        <br />
+        Gracias por subir una nueva solicitud online <br />
+        Hemos recibidos tu solicitud y nuestro equipo se comunicará con vos a la brevedad
+        <br />
+        Tu número de solicitud es: @Model
+    </div>
+</div>
+ 
+

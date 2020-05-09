@@ -69,6 +69,7 @@ namespace Tienda_NetCore3.Areas.Cliente.Controllers
             {
                 List<int> listadoIdServicios = new List<int>();
                 listadoIdServicios = HttpContext.Session.GetObject<List<int>>(SD.SesionCarritoCompras);
+                CarroComprasViewModel.ListadoServicios = new List<Servicio>();
                 foreach (int idServicio in listadoIdServicios)
                 {
                     CarroComprasViewModel.ListadoServicios.Add(_unitOfWork.servicio.GetFirstOrDefault(u => u.Id == idServicio, incluirPropiedades: "Frecuencia,Categoria"));
@@ -100,13 +101,19 @@ namespace Tienda_NetCore3.Areas.Cliente.Controllers
                     };
 
                     _unitOfWork.detalleCompra.Add(detalle);
-                    _unitOfWork.AplicarCambios();
                 }
 
+                // Al final aplicar los cambios
+                _unitOfWork.AplicarCambios();
                 // Reiniciar la variable de sesión del carro de compras
                 HttpContext.Session.SetObject(SD.SesionCarritoCompras, new List<int>());
                 return RedirectToAction("ConfirmacionCompra", "CarroCompras",new { id = CarroComprasViewModel.EncabezadoCompra.Id });
             }            
+        }
+
+        public IActionResult ConfirmacionCompra(int idEncabezadoCompra)
+        {
+            return View(idEncabezadoCompra);
         }
 
         public IActionResult Remover(int idServicio)
