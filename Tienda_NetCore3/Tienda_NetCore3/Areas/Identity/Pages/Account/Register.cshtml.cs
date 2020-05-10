@@ -60,6 +60,10 @@ namespace Tienda_NetCore3.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+            public string Nombre { get; set; }
+            public string Direccion { get; set; }
+            public string Ciudad { get; set; }
+            public string CodigoPostal { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
