@@ -17,6 +17,7 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
             servicio = new ServicioRepository(contexto);
             encabezadoCompra = new EncabezadoCompraRepository(contexto);
             detalleCompra = new DetalleCompraRepository(contexto);
+            usuario = new UsuarioRepository(contexto);
         }
 
         public ICategoriaRepository categoria { get; private set; }
@@ -28,6 +29,8 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
         public IEncabezadoCompraRepository encabezadoCompra { get; private set; }
 
         public IDetalleCompraRepository detalleCompra { get; set; }
+
+        public IUsuarioRepository usuario { get; private set; }
 
         public void AplicarCambios()
         {

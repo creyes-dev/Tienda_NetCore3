@@ -12,6 +12,8 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
         IEncabezadoCompraRepository encabezadoCompra { get; }
         IDetalleCompraRepository detalleCompra { get; }
 
+        IUsuarioRepository usuario { get; }
+
         void AplicarCambios();
     }
 }
