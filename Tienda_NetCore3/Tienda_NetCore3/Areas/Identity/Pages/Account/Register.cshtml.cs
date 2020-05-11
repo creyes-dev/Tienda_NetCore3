@@ -106,7 +106,7 @@ namespace Tienda_NetCore3.Areas.Identity.Pages.Account
 
                     if(rol == SD.Admin)
                     {
-                        await _userManager.AddToRoleAsync(user,SD.Admin)
+                        await _userManager.AddToRoleAsync(user, SD.Admin);
                     }
                     else
                     {

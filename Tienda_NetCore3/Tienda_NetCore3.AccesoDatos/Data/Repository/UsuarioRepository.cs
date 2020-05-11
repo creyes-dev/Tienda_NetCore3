@@ -22,7 +22,7 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
             usuario.LockoutEnd = DateTime.Now.AddYears(1000);
             _contexto.SaveChanges();
         }
-        void DesbloquearUsuario(string idUsuario)
+        public void DesbloquearUsuario(string idUsuario)
         {
             var usuario = _contexto.Usuario.FirstOrDefault(u => u.Id == idUsuario);
             usuario.LockoutEnd = DateTime.Now;
@@ -31,4 +31,4 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
 
     }
 }
-}
+
