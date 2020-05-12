@@ -4,6 +4,31 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{ 
+    var estado = Context.Request.Query["estado"];
+
+    var aprobado = "text-primary";
+    var pendiente = "text-primary";
+    var todas = "text-primary";
+
+    if(estado == "Aprobado")
+    {
+        aprobado = "active text-white";
+    }
+    else
+    {
+        if(estado == "Pendiente")
+        {
+            pendiente = "active text-white";
+        }
+        else
+        {
+            todas = "active text-white";
+        }
+    }
+
+}
+
 <h1>Index</h1>
 
 <div class="border backgroundWhite" p-3">
@@ -14,13 +39,13 @@
         <div class="p-2">
             <ul class="list-group list-group-horizontal-sm">
                 <a style="text-decoration:none" asp-controller="Compra" asp-route-estado="Pendiente" asp-action="Index">
-                    <li class="list-group-item">Pendiente</li>
+                    <li class="list-group-item @pendiente">Pendiente</li>
                 </a>
                 <a style="text-decoration:none" asp-controller="Compra" asp-route-estado="Aprobado" asp-action="Index">
-                    <li class="list-group-item">Aprobado</li>
+                    <li class="list-group-item @aprobado">Aprobado</li>
                 </a>
                 <a style="text-decoration:none" asp-controller="Compra" asp-route-estado="Todas" asp-action="Index">
-                    <li class="list-group-item">Todas</li>
+                    <li class="list-group-item @todas">Todas</li>
                 </a>
             </ul>
         </div>
