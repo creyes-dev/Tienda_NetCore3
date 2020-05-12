@@ -28,5 +28,27 @@ namespace Tienda_NetCore3.Areas.Admin.Controllers
             return View(_unitOfWork.usuario.GetAll(u => u.Id != claims.Value));
         }
 
+        public IActionResult Bloquear(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            _unitOfWork.usuario.BloquearUsuario(id);
+            return RedirectToAction(nameof(Index));            
+        }
+
+        public IActionResult Desbloquear(string id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            _unitOfWork.usuario.DesbloquearUsuario(id);
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
