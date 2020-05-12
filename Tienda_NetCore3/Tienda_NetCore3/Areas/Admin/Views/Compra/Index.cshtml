@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<div class="border backgroundWhite" p-3">
+    <div class="d-flex justify-content-between mb-3">
+        <div class="p-2">
+            <h2 class="text-primary">Listado de compras</h2>
+        </div>
+        <div class="p-2">
+            <ul class="list-group list-group-horizontal-sm">
+                <a style="text-decoration:none" asp-controller="Compra" asp-route-estado="Pendiente" asp-action="Index">
+                    <li class="list-group-item">Pendiente</li>
+                </a>
+                <a style="text-decoration:none" asp-controller="Compra" asp-route-estado="Aprobado" asp-action="Index">
+                    <li class="list-group-item">Aprobado</li>
+                </a>
+                <a style="text-decoration:none" asp-controller="Compra" asp-route-estado="Todas" asp-action="Index">
+                    <li class="list-group-item">Todas</li>
+                </a>
+            </ul>
+        </div>
+    </div>
+
+    <br /><br />
+    <table id="tblData" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                <th>ConteoServicios</th>
+                <th>Estado</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table> 
+
+</div>
+
+@section Scripts {
+    <script src="~/js/Compras.js"></script>
+}

@@ -16,5 +16,12 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
             _contexto = contexto;
         }
 
+        public void CambiarEstadoCompra(int idEncabezadoCompra, string estado)
+        {
+            var encabezadoCompra = _contexto.EncabezadoCompra.FirstOrDefault(o => o.Id == idEncabezadoCompra);
+            encabezadoCompra.Estado = estado;
+            _contexto.SaveChanges();
+        }
+
     }
 }

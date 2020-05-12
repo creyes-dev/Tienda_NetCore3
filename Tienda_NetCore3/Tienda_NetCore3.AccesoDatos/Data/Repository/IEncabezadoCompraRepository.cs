@@ -7,5 +7,6 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
 {
     public interface IEncabezadoCompraRepository : IRepository<EncabezadoCompra>
     {
+        void CambiarEstadoCompra(int idEncabezadoCompra, string estado);
     }
 }
