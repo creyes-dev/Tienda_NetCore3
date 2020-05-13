@@ -36,9 +36,34 @@ namespace Tienda_NetCore3.Areas.Admin.Controllers
             return View(compra);
         }
 
-            #region API Calls
+        public IActionResult Aprobar(int id)
+        {
+            var compra = _unitOfWork.encabezadoCompra.Get(id);
+            if(compra == null)
+            {
+                return NotFound();
+            }
 
-            public IActionResult ObtenerTodas()
+            _unitOfWork.encabezadoCompra.CambiarEstadoCompra(id, SD.EstadoAprobado);
+            return View(nameof(Index));
+        }
+
+        public IActionResult Rechazar(int id)
+        {
+            var compra = _unitOfWork.encabezadoCompra.Get(id);
+            if (compra == null)
+            {
+                return NotFound();
+            }
+
+            _unitOfWork.encabezadoCompra.CambiarEstadoCompra(id, SD.EstadoRechazado);
+            return View(nameof(Index));
+        }
+
+
+        #region API Calls
+
+        public IActionResult ObtenerTodas()
             {
                 return Json(new { data = _unitOfWork.encabezadoCompra.GetAll() });
             }
