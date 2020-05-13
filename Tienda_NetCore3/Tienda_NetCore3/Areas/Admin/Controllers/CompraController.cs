@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Tienda_NetCore3.AccesoDatos.Data.Repository;
 using Tienda_NetCore3.Models;
+using Tienda_NetCore3.Models.ViewModels;
 using Tienda_NetCore3.Utility;
 
 namespace Tienda_NetCore3.Areas.Admin.Controllers
@@ -24,6 +25,16 @@ namespace Tienda_NetCore3.Areas.Admin.Controllers
             {
                 return View();
             }
+
+            public IActionResult Detalles(int id)
+        {
+            CompraViewModel compra = new CompraViewModel
+            {
+                EncabezadoCompra = _unitOfWork.encabezadoCompra.Get(id),
+                DetallesCompra = _unitOfWork.detalleCompra.GetAll(filtro: c => c.IdEncabezadoCompra == id)
+            };
+            return View(compra);
+        }
 
             #region API Calls
 

@@ -1,0 +1,136 @@
+﻿@model Tienda_NetCore3.Models.ViewModels.CompraViewModel
+@using Tienda_NetCore3.Utility
+@{
+    ViewData["Title"] = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Detalles</h1>
+
+
+<form method="post">
+
+    @if (Model.DetallesCompra.Count() > 0)
+    {
+        <br />
+        <div class="backgroundWhite container">
+            <div class="card">
+                <div class="card-header bg-dark text-light ml-0 row container">
+                    <div class="col-12 d-none d-md-block col-md-6 pb-1">
+                        <i class="fas fa-shopping-cart"></i>&nbsp; Resumen de compras
+                    </div>
+                    <div class="col-12 col-md-4 offset-md-2 text-right">
+                        <a asp-action="Index" asp-controller="Compra" asp-area="Admin" class="btn btn-outline-info form-control btn-sm">Volver a las compras</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container rounded p-2">
+                        <div class="row">
+                            <div class="col-12 col-lg-6 pb-4">
+                                <div class="row">
+                                    <h4 class="d-flex justify-content-between align-items-center">
+                                        <span class="text-primary">Detalles de envio:</span>
+                                    </h4>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>Nombre</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input asp-for="EncabezadoCompra.Nombre" id="txtNombre" readonly class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>Teléfono</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input asp-for="EncabezadoCompra.Telefono" id="txtTelefono" readonly class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>Dirección</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input asp-for="EncabezadoCompra.Direccion" id="txtDireccion" readonly class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>Ciudad</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input asp-for="EncabezadoCompra.Ciudad" id="txtNombre" readonly class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>Código postal</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input asp-for="EncabezadoCompra.CodigoPostal" id="txtNombre" readonly class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input asp-for="EncabezadoCompra.Email" id="txtNombre" readonly class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-5 offset-lg-1">
+                                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="text-primary">
+                                        Resumen de compra
+                                    </span>
+                                </h4>
+                                <ul class="list-group mb-3">
+                                    @foreach (var detalles in Model.DetallesCompra)
+                                    {
+                                        <li class="list-group-item d-flex justify-content-between">
+                                            <div>
+                                                <input type="hidden" asp-for="@detalles.Id" />
+                                                <h6 class="my-0">@detalles.NombreServicio</h6>
+                                                <small class="text-muted">Precio: @detalles.Precio</small>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+
+                                @if(Model.EncabezadoCompra.Estado != SD.EstadoEnviado)
+                                {
+                                    <div class="col-12">
+                                        <button class="btn btn-outline-success disabled form-control" disabled>@Model.EncabezadoCompra.Estado</button>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        @if (Model.EncabezadoCompra.Estado != SD.EstadoAprobado && Model.EncabezadoCompra.Estado != SD.EstadoRechazado)
+                        {
+                            <div class="col-6 offset-md-4 col-md-4 col-lg-2 offset-lg-8">
+                                <a asp-action="Aprobar" asp-route-id="@Model.EncabezadoCompra.Id" class="btn btn-success form-control">Aprobar</a>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2">
+                                <a asp-action="Rechazar" asp-route-id="@Model.EncabezadoCompra.Id" class="btn btn-danger form-control">Rechazar</a>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="backgroundWhite">No hay items agregados al carro de compras...</div>
+    }
+
+</form>
