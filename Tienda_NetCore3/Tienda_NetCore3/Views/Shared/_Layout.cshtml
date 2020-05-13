@@ -31,41 +31,48 @@
                     <li class="nav-item active">
                         <a class="nav-link" asp-area="Cliente" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Gestión de contenidos
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropDown">
-                            <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Categoria" asp-action="Index">Categoría</a>
-                            <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Frecuencia" asp-action="Index">Frecuencia</a>
-                            <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Servicio" asp-action="Index">Servicio</a>
-                            <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Usuario" asp-action="Index">Usuario</a>
-                            <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Compra" asp-action="Index">Compra</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                    @if (HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(SD.SesionCarritoCompras) != null)
-                    {
-                        <li style="color:white">
-                            <a asp-area="Cliente" asp-controller="CarroCompras" asp-action="Index" class="nav-link text-white">
-                                @{
-                                    var cantItems = HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(SD.SesionCarritoCompras).Count;
-                                }
-                                <i class="fas fa-shopping-cart"></i>&nbsp; (@cantItems)
-                            </a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li style="color:white">
-                            <a href="#" class="nav-link text-white">
-                                <i class="fas fa-shopping-cart"></i>&nbsp; (0)
-                            </a>
-                        </li>
-                    }
-                </ul>
+
+                        @if (User.IsInRole(SD.Manager) || User.IsInRole(SD.Admin))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Gestión de contenidos
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="navbarDropDown">
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Categoria" asp-action="Index">Categoría</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Frecuencia" asp-action="Index">Frecuencia</a>
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Servicio" asp-action="Index">Servicio</a>
+                                    @if(User.IsInRole(SD.Admin))
+                                    { 
+                                        <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Usuario" asp-action="Index">Usuario</a>
+                                    }
+                                    <a class="dropdown-item text-white" asp-area="Admin" asp-controller="Compra" asp-action="Index">Compra</a>
+                                </div>
+
+                            </li>
+                        }
+
+                        @if (HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(SD.SesionCarritoCompras) != null)
+                        {
+                            <li style="color:white">
+                                <a asp-area="Cliente" asp-controller="CarroCompras" asp-action="Index" class="nav-link text-white">
+                                    @{
+                                        var cantItems = HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(SD.SesionCarritoCompras).Count;
+                                    }
+                                    <i class="fas fa-shopping-cart"></i>&nbsp; (@cantItems)
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li style="color:white">
+                                <a href="#" class="nav-link text-white">
+                                    <i class="fas fa-shopping-cart"></i>&nbsp; (0)
+                                </a>
+                            </li>
+                        }
+                    </ul>
             </div>
             <partial name="_LoginPartial" />
         </nav>
