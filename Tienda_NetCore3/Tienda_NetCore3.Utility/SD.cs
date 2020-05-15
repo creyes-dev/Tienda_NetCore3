@@ -15,6 +15,6 @@ namespace Tienda_NetCore3.Utility
 
         public const string Admin = "Admin";
         public const string Manager = "Manager";
-
+        public const string usp_ObtenerCategorias = "usp_ObtenerCategorias";
     }
 }

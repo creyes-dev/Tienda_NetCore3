@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Tienda_NetCore3.AccesoDatos.Data.Repository;
 using Tienda_NetCore3.Models;
+using Tienda_NetCore3.Utility;
 
 namespace Tienda_NetCore3.Areas.Admin.Controllers
 {
@@ -65,7 +66,8 @@ namespace Tienda_NetCore3.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult ObtenerTodas()
         {
-            return Json(new { data = _unitOfWork.categoria.GetAll() });
+            /*return Json(new { data = _unitOfWork.categoria.GetAll() });*/
+            return Json(new { data = _unitOfWork.SP_Call.DevolverListado<Categoria>(SD.usp_ObtenerCategorias, null) });
         }
 
         [HttpDelete]

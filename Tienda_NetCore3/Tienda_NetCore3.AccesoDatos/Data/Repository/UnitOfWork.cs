@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Tienda_NetCore3.Models;
@@ -18,6 +19,8 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
             encabezadoCompra = new EncabezadoCompraRepository(contexto);
             detalleCompra = new DetalleCompraRepository(contexto);
             usuario = new UsuarioRepository(contexto);
+
+            SP_Call = new SP_Call(contexto);
         }
 
         public ICategoriaRepository categoria { get; private set; }
@@ -31,6 +34,8 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
         public IDetalleCompraRepository detalleCompra { get; set; }
 
         public IUsuarioRepository usuario { get; private set; }
+
+        public ISP_Call SP_Call { get; private set; }
 
         public void AplicarCambios()
         {

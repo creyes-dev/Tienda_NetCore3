@@ -14,6 +14,8 @@ namespace Tienda_NetCore3.AccesoDatos.Data.Repository
 
         IUsuarioRepository usuario { get; }
 
+        ISP_Call SP_Call { get;  }
+
         void AplicarCambios();
     }
 }
