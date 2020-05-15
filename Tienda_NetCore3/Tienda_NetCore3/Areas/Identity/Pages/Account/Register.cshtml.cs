@@ -18,7 +18,7 @@ using Tienda_NetCore3.Utility;
 
 namespace Tienda_NetCore3.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
+    [Authorize]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;

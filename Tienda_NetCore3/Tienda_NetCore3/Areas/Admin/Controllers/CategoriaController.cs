@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Tienda_NetCore3.AccesoDatos.Data.Repository;
 using Tienda_NetCore3.Models;
@@ -9,6 +10,7 @@ using Tienda_NetCore3.Models;
 namespace Tienda_NetCore3.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class CategoriaController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

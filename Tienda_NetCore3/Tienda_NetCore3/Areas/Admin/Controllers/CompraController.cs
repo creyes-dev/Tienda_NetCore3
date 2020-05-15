@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Tienda_NetCore3.AccesoDatos.Data.Repository;
 using Tienda_NetCore3.Models;
 using Tienda_NetCore3.Models.ViewModels;
@@ -12,6 +13,8 @@ namespace Tienda_NetCore3.Areas.Admin.Controllers
 {
 
     [Area("Admin")]
+    [Authorize]
+
     public class CompraController : Controller
     {
             private readonly IUnitOfWork _unitOfWork;

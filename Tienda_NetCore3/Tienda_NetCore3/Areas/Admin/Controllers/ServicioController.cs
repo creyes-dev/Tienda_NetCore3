@@ -8,10 +8,12 @@ using Tienda_NetCore3.AccesoDatos.Data.Repository;
 using Tienda_NetCore3.Models;
 using Tienda_NetCore3.Models.ViewModels;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Tienda_NetCore3.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class ServicioController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
